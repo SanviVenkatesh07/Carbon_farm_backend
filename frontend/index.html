@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenHarvest</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- =====================================================
+         1. LANGUAGE SCREEN — FIRST SCREEN
+    ====================================================== -->
+
+    <section id="language-screen" class="screen">
+
+        <div class="language-card">
+
+            <div class="logo">🌱</div>
+
+            <h1>GreenHarvest</h1>
+
+            <p class="tagline">
+                Smart farming. Better harvests. A greener future.
+            </p>
+
+            <h2>Choose your language</h2>
+
+            <p class="subtext">
+                Select your preferred language to continue.
+            </p>
+
+            <select id="language-select" class="language-select">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी — Hindi</option>
+                <option value="kn">ಕನ್ನಡ — Kannada</option>
+                <option value="ta">தமிழ் — Tamil</option>
+                <option value="te">తెలుగు — Telugu</option>
+                <option value="ml">മലയാളം — Malayalam</option>
+                <option value="mr">मराठी — Marathi</option>
+                <option value="bn">বাংলা — Bengali</option>
+                <option value="gu">ગુજરાતી — Gujarati</option>
+                <option value="pa">ਪੰਜਾਬੀ — Punjabi</option>
+                <option value="as">অসমীয়া — Assamese</option>
+                <option value="or">ଓଡ଼ିଆ — Odia</option>
+                <option value="ur">اردو — Urdu</option>
+                <option value="sa">संस्कृतम् — Sanskrit</option>
+                <option value="ne">नेपाली — Nepali</option>
+                <option value="kok">कोंकणी — Konkani</option>
+                <option value="mai">मैथिली — Maithili</option>
+                <option value="ks">کٲشُر — Kashmiri</option>
+                <option value="sd">سنڌي — Sindhi</option>
+                <option value="doi">डोगरी — Dogri</option>
+                <option value="mni">মণিপুরী — Manipuri</option>
+                <option value="brx">बड़ो — Bodo</option>
+                <option value="sat">ᱥᱟᱱᱛᱟᱲᱤ — Santali</option>
+                <option value="bho">भोजपुरी — Bhojpuri</option>
+                <option value="raj">राजस्थानी — Rajasthani</option>
+                <option value="tcy">ತುಳು — Tulu</option>
+                <option value="awa">अवधी — Awadhi</option>
+            </select>
+
+            <button class="primary-btn" onclick="continueWithLanguage()">
+    Continue
+</button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         2. AUTH SCREEN
+    ====================================================== -->
+
+    <section id="auth-screen" class="screen hidden">
+
+        <div class="auth-card">
+
+            <div class="logo">🌱</div>
+
+            <h1>GreenHarvest</h1>
+
+            <p id="auth-subtitle">
+                Sign in to continue to your farm dashboard.
+            </p>
+
+
+            <!-- AUTH TABS -->
+
+            <div class="auth-tabs">
+
+                <button
+                    id="login-tab"
+                    class="auth-tab active"
+                    onclick="showLogin()">
+                    Sign In
+                </button>
+
+                <button
+                    id="signup-tab"
+                    class="auth-tab"
+                    onclick="showSignup()">
+                    Create Account
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <div id="login-form">
+
+                <label>Email</label>
+
+                <input
+                    id="login-email"
+                    type="email"
+                    placeholder="Enter your email"
+                >
+
+                <label>Password</label>
+
+                <input
+                    id="login-password"
+                    type="password"
+                    placeholder="Enter your password"
+                >
+
+                <button
+                    class="primary-btn"
+                    onclick="loginUser()">
+                    Sign In
+                </button>
+
+            </div>
+
+
+            <!-- SIGNUP -->
+
+            <div id="signup-form" class="hidden">
+
+                <label>Name</label>
+
+                <input
+                    id="signup-name"
+                    type="text"
+                    placeholder="Enter your name"
+                >
+
+                <label>Email</label>
+
+                <input
+                    id="signup-email"
+                    type="email"
+                    placeholder="Enter your email"
+                >
+
+                <label>Password</label>
+
+                <input
+                    id="signup-password"
+                    type="password"
+                    placeholder="Create a password"
+                >
+
+                <label>Confirm Password</label>
+
+                <input
+                    id="signup-confirm"
+                    type="password"
+                    placeholder="Confirm your password"
+                >
+
+                <button
+                    class="primary-btn"
+                    onclick="signupUser()">
+                    Create Account
+                </button>
+
+            </div>
+
+
+            <p id="auth-message" class="auth-message"></p>
+
+
+            <button
+                class="back-language"
+                onclick="showLanguageScreen()">
+                ← Change Language
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         3. DASHBOARD
+    ====================================================== -->
+
+    <section id="dashboard-screen" class="screen hidden">
+
+        <header class="topbar">
+
+            <div class="brand">
+                🌱 GreenHarvest
+            </div>
+
+            <div class="topbar-right">
+
+                <span id="welcome-user">
+                    Welcome, Farmer
+                </span>
+
+                <button
+                    class="language-change"
+                    onclick="showLanguageScreen()">
+                    Change Language
+                </button>
+
+                <button
+                    class="logout-btn"
+                    onclick="logoutUser()">
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <main class="dashboard">
+
+
+            <!-- HERO -->
+
+            <div class="hero">
+
+                <div>
+
+                    <p class="eyebrow" data-i18n="smart">
+                        SMART FARMING ASSISTANT
+                    </p>
+
+                    <h1 data-i18n="hero_title">
+                        Grow smarter.<br>
+                        Farm sustainably.
+                    </h1>
+
+                    <p data-i18n="hero_text">
+                        Get practical guidance for crops, irrigation,
+                        fertilizers, pests and carbon-credit readiness.
+                    </p>
+
+                </div>
+
+                <div class="hero-icon">
+                    🌾
+                </div>
+
+            </div>
+
+
+            <!-- FEATURES -->
+
+            <div class="section-title">
+
+                <h2 data-i18n="help">
+                    What do you need help with?
+                </h2>
+
+                <p data-i18n="choose">
+                    Choose an option to get started.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <button
+                    class="feature-card"
+                    onclick="openFeature('crop')">
+
+                    <span>🌾</span>
+
+                    <strong data-i18n="crop">
+                        Crop Guidance
+                    </strong>
+
+                    <small data-i18n="crop_desc">
+                        Get advice for your crops
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    onclick="openFeature('irrigation')">
+
+                    <span>💧</span>
+
+                    <strong data-i18n="irrigation">
+                        Irrigation
+                    </strong>
+
+                    <small data-i18n="irrigation_desc">
+                        Plan efficient watering
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    onclick="openFeature('fertilizer')">
+
+                    <span>🌱</span>
+
+                    <strong data-i18n="fertilizer">
+                        Fertilizers
+                    </strong>
+
+                    <small data-i18n="fertilizer_desc">
+                        Improve nutrient management
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    onclick="openFeature('pests')">
+
+                    <span>🐛</span>
+
+                    <strong data-i18n="pests">
+                        Pest Management
+                    </strong>
+
+                    <small data-i18n="pests_desc">
+                        Identify and manage crop pests
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    onclick="openFeature('market')">
+
+                    <span>📈</span>
+
+                    <strong data-i18n="market">
+                        Market Prices
+                    </strong>
+
+                    <small data-i18n="market_desc">
+                        Check raw-material prices
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="feature-card"
+                    onclick="openFeature('carbon')">
+
+                    <span>♻️</span>
+
+                    <strong data-i18n="carbon">
+                        Carbon Credits
+                    </strong>
+
+                    <small data-i18n="carbon_desc">
+                        Check your carbon-credit readiness
+                    </small>
+
+                </button>
+
+            </div>
+
+
+            <!-- ASSISTANT -->
+
+            <div class="chat-card">
+
+                <div>
+
+                    <p class="eyebrow">
+                        FARMER ASSISTANT
+                    </p>
+
+                    <h2 data-i18n="assistant">
+                        Ask GreenHarvest
+                    </h2>
+
+                    <p data-i18n="assistant_desc">
+                        Type your question or use the voice assistant
+                        for help.
+                    </p>
+
+                </div>
+
+                <button onclick="openChat()">
+                    💬
+                    <span data-i18n="ask">
+                        Ask Assistant
+                    </span>
+                </button>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         4. FEATURE MODAL
+    ====================================================== -->
+
+    <div id="feature-modal" class="modal hidden">
+
+        <div class="modal-card">
+
+            <button
+                class="close"
+                onclick="closeFeature()">
+                ×
+            </button>
+
+            <div id="feature-content"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         5. CHAT MODAL
+    ====================================================== -->
+
+    <div id="chat-modal" class="modal hidden">
+
+        <div class="modal-card chat-modal">
+
+            <button
+                class="close"
+                onclick="closeChat()">
+                ×
+            </button>
+
+            <h2>
+                💬 GreenHarvest Assistant
+            </h2>
+
+            <div id="messages" class="messages">
+
+                <div class="message bot">
+                    Hello! I can help with crops, irrigation,
+                    fertilizers, pests, market prices and
+                    carbon-credit readiness.
+                </div>
+
+            </div>
+
+            <div class="chat-input">
+
+                <input
+                    id="chat-input"
+                    type="text"
+                    placeholder="Type your question..."
+                    onkeydown="handleEnter(event)"
+                >
+
+                <button onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
